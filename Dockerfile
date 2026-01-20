@@ -7,8 +7,8 @@ RUN npm ci
 
 COPY . .
 
-ARG VITE_API_URL
-ENV VITE_API_URL=$VITE_API_URL
+# VITE_API_URL is not needed - nginx proxies /api to backend
+# The frontend code defaults to empty string (relative paths) when not set
 RUN npm run build
 
 FROM nginx:alpine
